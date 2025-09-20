@@ -12,29 +12,30 @@
   <div id="view"> You can edit me with Ctrl+E combination</div>
   <textarea cols="60" rows="20" name="" id="field" style="display: none;"></textarea>
 
-  <script>
 
-    const view = document.getElementById('view');
-    const field = document.getElementById('field');
+<script>
+  const view = document.getElementById('view');
+  const field = document.getElementById('field');
 
-    document.addEventListener('keydown', (e) => {
-      if (e.ctrlKey && e.key === 'e') {
-        e.preventDefault();
-        view.style.display = 'none';
-        field.style.display = 'block';
-        field.value = view.innerHTML;
-        field.focus();
-      }
+  document.addEventListener('keydown', (e) => {
 
-      if (e.ctrlKey && e.key.toLowerCase() === 's') {
-        e.preventDefault();
-        view.innerHTML = field.value;
-        field.style.display = 'none';
-        view.style.display = 'block';
-      }
-    });
+    if (e.ctrlKey && e.key.toLowerCase() === 'e') {
+      e.preventDefault();
+      view.style.display = 'none';
+      field.style.display = 'block';
+      field.value = view.textContent;
+      field.focus();
+    }
 
-  </script>
+    if (e.ctrlKey && e.key.toLowerCase() === 's') {
+      e.preventDefault();
+      view.textContent = field.value;
+      field.style.display = 'none';
+      view.style.display = 'block';
+    }
+    
+  });
+</script>
 
   Link to table sort example: <a href="index-2.html">index-2.html</a>
 

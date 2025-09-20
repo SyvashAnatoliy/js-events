@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="view"> You can edit me with Ctrl+E combination</div>
+  <textarea cols="60" rows="20" name="" id="field" style="display: none;"></textarea>
+
+  <script>
+
+    const view = document.getElementById('view');
+    const field = document.getElementById('field');
+
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'e') {
+        e.preventDefault();
+        view.style.display = 'none';
+        field.style.display = 'block';
+        field.value = view.innerHTML;
+        field.focus();
+      }
+
+      if (e.ctrlKey && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        view.innerHTML = field.value;
+        field.style.display = 'none';
+        view.style.display = 'block';
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
